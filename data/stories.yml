@@ -1,0 +1,28 @@
+version: "3.1"
+
+stories:
+  - story: Greet and request services
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: request_services
+      - action: utter_request_services
+
+  - story: Express thanks and inquire about technology
+    steps:
+      - intent: thanks
+      - action: utter_thanks
+      - intent: inquire_about_technology
+      - action: utter_inquire_about_technology
+
+  - story: Activate chatbot and discuss projects
+    steps:
+      - intent: activate_chatbot
+      - action: utter_activate_chatbot
+      - intent: discuss_projects
+      - action: utter_discuss_projects
+
+  - story: Goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye

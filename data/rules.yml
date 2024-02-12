@@ -1,0 +1,37 @@
+version: "3.1"
+
+rules:
+  - rule: Activate chatbot
+    steps:
+      - intent: activate_chatbot
+      - action: utter_activate_chatbot
+
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Say goodbye
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
+
+  - rule: Express thanks
+    steps:
+      - intent: thanks
+      - action: utter_thanks
+
+  - rule: Request services
+    steps:
+      - intent: request_services
+      - action: utter_request_services
+
+  - rule: Inquire about technology
+    steps:
+      - intent: inquire_about_technology
+      - action: utter_inquire_about_technology
+
+  - rule: Discuss projects
+    steps:
+      - intent: discuss_projects
+      - action: utter_discuss_projects

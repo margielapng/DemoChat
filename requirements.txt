@@ -1,0 +1,4 @@
+rasa
+sqlalchemy<2.0
+aiohttp==3.7.4
+typing-extensions==3.7.4.1

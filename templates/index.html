@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>O-bot</title>
+    <style>
+        body {
+            font-family: 'Gilroy - Bold', 'Gilroy - SemiBold', 'Gilroy - Regular';
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #231F20;
+        }
+
+        #chat-widget-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            text-align: right;
+            padding: 20px;
+        }
+
+        #chat-widget {
+            width: 400px;
+            border: 2px solid #ec774e;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0px 0px 15px rgba(236, 119, 78, 0.5);
+            display: none;
+            background-color: #ffffff;
+            animation: fadeIn 0.9s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        #chat-header {
+            background-color: #ec774e;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        #chat-messages {
+            height: 300px;
+            overflow-y: scroll;
+            padding: 10px;
+        }
+
+        #user-input {
+            width: calc(100% - 20px);
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            border-top: 2px solid #ec774e;
+            border-radius: 10px;
+            box-sizing: border-box;
+            color: #fff;
+            background-color: #3D3D3D;
+            outline: none;
+        }
+
+        #chat-button {
+            background: none; /* Make the button transparent */
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            outline: none;
+        }
+
+        #chat-button img {
+            width: 50px;
+            height: auto;
+            border-radius: 50%;
+            border: 2px solid #ec774e;
+        }
+    </style>
+</head>
+
+<body>
+<div id="chat-widget-container">
+    <button id="chat-button"><img src="https://es.botlibre.com/avatars/a14251909.png" alt="Chat"></button>
+    <div id="chat-widget">
+        <div id="chat-header">O'bot</div>
+        <div id="chat-messages"></div>
+        <input type="text" id="user-input" placeholder="Type your message...">
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Welcome messaged
+    const chatMessages = document.getElementById('chat-messages');
+    chatMessages.innerHTML += '<div><strong>AI Assistant:</strong> Welcome! How can I assist you today?</div>';
+
+    // Example: Handle user input
+    const userInput = document.getElementById('user-input');
+    userInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' && userInput.value.trim() !== '') {
+            const userMessage = userInput.value.trim();
+            chatMessages.innerHTML += `<div><strong>You:</strong> ${userMessage}</div>`;
+            // Send user message to the server and get bot's response
+            $.ajax({
+                type: "POST",
+                url: "/webhook",
+                contentType: "application/json",
+                data: JSON.stringify({ message: userMessage }),
+                success: function (data) {
+                    let botResponse = data.response;
+
+                    // Append bot's response to the chatbox
+                    $("#chat-messages").append(`<div><strong>AI Assistant:</strong> ${botResponse}</div>`);
+                },
+                error: function () {
+                    // Handle error if needed
+                }
+            });
+
+            userInput.value = ''; // Clear the input field
+        }
+    });
+
+    // Example: Toggle chat widget visibility with fade-in animation
+    const chatWidget = document.getElementById('chat-widget');
+    const chatButton = document.getElementById('chat-button');
+
+    chatButton.addEventListener('click', function () {
+        chatWidget.style.display = chatWidget.style.display === 'none' ? 'block' : 'none';
+    });
+</script>
+</body>
+
+</html>

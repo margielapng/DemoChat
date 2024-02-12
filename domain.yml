@@ -1,0 +1,39 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - thanks
+  - request_services
+  - inquire_about_technology
+  - discuss_projects
+  - activate_chatbot
+
+entities:
+  - tech
+
+responses:
+  utter_greet:
+    - text: "Hello! How can I assist you today?"
+
+  utter_goodbye:
+    - text: "Goodbye! If you have any more questions, feel free to ask."
+
+  utter_thanks:
+    - text: "You're welcome! If you need further assistance, let me know."
+
+  utter_request_services:
+    - text: "Our company provides a range of IT services. We specialize in [list of services]. How can we help you?"
+
+  utter_inquire_about_technology:
+    - text: "We specialize in cutting-edge technologies such as [technologies]. Feel free to ask about any specific technology you're interested in."
+
+  utter_discuss_projects:
+    - text: "Certainly! We have successfully completed projects in [industry/sector]. Let's discuss how we can collaborate on your project."
+
+  utter_activate_chatbot:
+    - text: "Sure, let's start a chat! How can I assist you today?"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

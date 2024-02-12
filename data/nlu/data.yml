@@ -1,0 +1,22 @@
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+
+  - intent: goodbye
+    examples: |
+      - good bye
+      - see you later
+      - good night
+      - bye
+      - goodbye
+
+  - intent: thanks
+    examples: |
+      - thanks
+      - thank you

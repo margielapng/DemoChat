@@ -1,0 +1,54 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+
+  - intent: goodbye
+    examples: |
+      - good bye
+      - see you later
+      - bye
+      - goodbye
+
+  - intent: thanks
+    examples: |
+      - thanks
+      - thank you
+      - appreciate it
+      - thanks a lot
+
+  - intent: request_services
+    examples: |
+      - What services do you provide?
+      - Can you tell me about your services?
+      - I'm interested in your services
+      - What can your company do for me?
+
+  - intent: inquire_about_technology
+    examples: |
+      - Tell me about your technology solutions
+      - What technologies do you specialize in?
+      - Explain your IT capabilities
+      - How can you help with technology?
+
+  - intent: discuss_projects
+    examples: |
+      - Can we discuss ongoing projects?
+      - Tell me about your recent projects
+      - I want to know about your successful projects
+      - Discuss project collaborations
+
+  - intent: activate_chatbot
+    examples: |
+      - initiate chat
+      - start chat
+      - activate chatbot
+      - talk to the bot
+      - chat
